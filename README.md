@@ -1,76 +1,68 @@
-# MagStudios
+# NexDev Studios · Sitio Web Oficial
 
-MagStudios es una startup independiente que crea aplicaciones gratuitas y de
-código abierto para móvil, TV y escritorio. Construimos herramientas útiles,
-claras y sin funciones bloqueadas detrás de pagos.
+Repositorio oficial del sitio web de **NexDev Studios** y presentación oficial de **neXStream**, el reproductor IPTV nativo y de código abierto para dispositivos Android.
 
-Visita el sitio oficial: [magstudiosweb.vercel.app](https://magstudiosweb.vercel.app/)
+🌐 **Sitio Web Oficial:** [https://nexdevstudios.vercel.app/](https://nexdevstudios.vercel.app/)
 
-## MagPlayer+
+---
 
-**MagPlayer+** es nuestro producto actual: un reproductor multimedia para
-Android, Android TV y, próximamente, distribuciones Linux basadas en Debian.
-Reúne en una misma experiencia el contenido propio del dispositivo y las
-fuentes que cada persona decide añadir.
+## 📱 Sobre neXStream
 
-Incluye:
+**neXStream** es un reproductor multimedia de última generación desarrollado exclusivamente para smartphones y tablets Android (Android 8.0 Oreo hasta Android 15+). Diseñado con **Jetpack Compose**, interfaz dinámica **Material You** y motor de decodificación por hardware con **Media3 ExoPlayer**.
 
-- Reproducción de música, vídeos y grabaciones locales.
-- Listas M3U, servidores compatibles y contenido bajo demanda de esas fuentes.
-- Canales en vivo, guía de categorías, favoritos y controles parentales.
-- MultiView para seguir dos o cuatro canales y elegir cuál se escucha.
-- Grabación de emisiones compatibles y acceso a ellas desde la biblioteca.
-- Interfaces adaptadas para móvil, Android TV con D-pad y escritorio.
+### Características Principales
 
-MagPlayer+ no aloja, vende ni distribuye contenido audiovisual. Cada usuario
-es responsable de las fuentes y archivos que incorpora a su biblioteca.
+- **TV en Vivo, Películas y Series:** Catálogo organizado en pestañas fluidas con carrusel de destacados y acceso directo a sinopsis.
+- **Búsqueda Instantánea:** Motor de búsqueda con filtros por Canales, VOD o Series, categorías ordenadas y listados Top 10.
+- **Biblioteca Personal:** Gestión local y privada de canales y contenidos favoritos guardados en la memoria del dispositivo.
+- **Ajustes y Personalización:** Conexión con múltiples servidores Xtream Codes, selección de temas dinámicos, ajuste de buffers de streaming y decodificación por hardware.
+- **Actualizador Integrado:** Sistema in-app conectado directamente con GitHub Releases para recibir nuevas versiones sin depender de tiendas de aplicaciones.
+- **100% Libre y Privado:** Sin anuncios, sin rastreo, sin telemetría y sin contenidos precargados.
 
-El código fuente de MagPlayer+ tendrá su propio repositorio público en
-MagStudios. Este repositorio contiene únicamente el sitio oficial.
+---
 
-Las descargas oficiales de MagPlayer+ se inician desde este sitio. Una vez
-instalada, la aplicación comprueba y descarga sus actualizaciones desde
-**Ajustes > Actualizaciones**. Los APK se alojan junto al código de la app para
-que sean verificables, pero MagStudios no distribuye enlaces mediante mirrors,
-Drive, Mega ni otras tiendas.
+## 📦 Descargas Oficiales de la App
 
-Para quienes usan la aplicación por primera vez, el sitio incluye una
-[guía paso a paso de MagPlayer+](https://magstudiosweb.vercel.app/guia.html):
-instalación, permisos, listas M3U/Xtream, biblioteca, favoritos, MultiView,
-transferencias Wi-Fi y actualizaciones.
+Las versiones oficiales compiladas y firmadas de neXStream se descargan desde la web oficial o directamente desde el repositorio de la aplicación:
 
-## Otros proyectos
+- **Universal APK:** Compatible con todos los teléfonos y tablets Android.
+- **ARM64-v8a APK:** Optimizado para smartphones modernos de 64 bits (menor peso y máxima velocidad).
+- **ARMEABI-v7a APK:** Para terminales con procesadores de 32 bits.
 
-### MagLinkTV y MagLinkTV+
+📥 **Repositorio de la Aplicación:** [NexDevStudios-repo/neXStream](https://github.com/NexDevStudios-repo/neXStream)  
+🏷️ **Lanzamientos Oficiales:** [GitHub Releases](https://github.com/NexDevStudios-repo/neXStream/releases)
 
-Ambas aplicaciones están **fuera de servicio y desactivadas**. Se retiraron
-después de que versiones modificadas por terceros circularan fuera del proyecto
-original. MagStudios no ofrece mantenimiento ni soporte técnico para ellas.
+---
 
-### MagSend
+## 🌐 Estructura del Sitio Web
 
-Proyecto en desarrollo para transferir archivos directamente entre dispositivos
-conectados a la misma red Wi-Fi, sin cables ni servicios intermedios.
+El sitio web está desarrollado con HTML5 semántico, CSS3 Vanilla y JavaScript asíncrono para garantizar máxima velocidad, ligereza y accesibilidad:
 
-### MagSearch
+- `index.html`: Página principal con hero, selector interactivo de descargas por arquitectura, showcase de las 4 secciones reales de la app, historia del fork y canales de contacto.
+- `guia.html`: Guía paso a paso para la instalación del APK, configuración de credenciales Xtream Codes y uso de funciones.
+- `legal.html`: Términos de uso, aviso de neutralidad tecnológica y atribuciones de licencia.
+- `css/styles.css`: Sistema de diseño moderno con paleta oscura refinada y tipografía oficial Poppins.
+- `js/main.js`: Lógica interactiva para pestañas de arquitectura, menú móvil y sincronización automática en tiempo real con la API de GitHub Releases.
 
-Un navegador pensado desde cero para Android TV, con navegación cómoda a
-distancia. Compartiremos más información cuando esté listo para mostrarse.
+---
 
-### MagChat+
+## ⚖️ Neutralidad Tecnológica y Licencia
 
-Proyecto de investigación para una mensajería descentralizada y privada. La
-idea es priorizar conexiones directas entre dispositivos por Bluetooth, Wi-Fi
-local o datos móviles, con llamadas, videollamadas y funciones de accesibilidad
-asistidas por modelos de IA locales cuando el dispositivo lo permita.
+neXStream es una herramienta técnica neutral de software libre. **No aloja, vende, retransmite ni distribuye listas de reproducción, servidores IPTV ni contenidos protegidos por derechos de autor**. Cada usuario es el único responsable de las credenciales y fuentes que introduce en la aplicación.
 
-## Código abierto y soporte
+- **Licencia:** GNU General Public License v3.0 ([GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html)).
 
-Nuestros productos se crean para poder estudiarse, mejorarse y compartirse. Las
-licencias y repositorios de cada aplicación se publicarán junto con sus
-versiones oficiales.
+---
 
-- Organización: [github.com/MagStudios-repo](https://github.com/MagStudios-repo)
-- Soporte: [soportemagstudiosoficial@gmail.com](mailto:soportemagstudiosoficial@gmail.com)
+## 📬 Canales Oficiales y Contacto
 
-Gracias por acompañar el trabajo de MagStudios.
+- **Web:** [https://nexdevstudios.vercel.app/](https://nexdevstudios.vercel.app/)
+- **GitHub Organización:** [github.com/NexDevStudios-repo](https://github.com/NexDevStudios-repo)
+- **Canal de Telegram:** [t.me/+C_ZyoLwgMi1iNjRh](https://t.me/+C_ZyoLwgMi1iNjRh)
+- **Instagram:** [@nexdevstudios_](https://instagram.com/nexdevstudios_)
+- **X (Twitter):** [@nexdevstudios_](https://x.com/nexdevstudios_)
+- **Correo de Asistencia Técnica:** [soportenexdevstudiosoficial@gmail.com](mailto:soportenexdevstudiosoficial@gmail.com)
+
+---
+
+&copy; 2026 **NexDev Studios**. Todos los derechos reservados.

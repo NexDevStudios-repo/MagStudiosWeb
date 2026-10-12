@@ -1,360 +1,605 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MagStudios · Apps open source para móvil, TV y escritorio</title>
-  <meta name="description" content="Catálogo oficial de aplicaciones open source de MagStudios para móvil, Android TV y escritorio. Conocé MagPlayer+ y nuestros proyectos." />
-  <meta id="theme-color-meta" name="theme-color" content="#0a0e12" />
+  <title>neXStream · Reproductor IPTV Nativo para Android · NexDev Studios</title>
+  <meta name="description" content="neXStream es el reproductor IPTV de código abierto definitivo para smartphones y tablets Android de NexDev Studios. Compatible con Xtream Codes y M3U, interfaz Material You y motor ExoPlayer." />
+  <meta id="theme-color-meta" name="theme-color" content="#08090d" />
   <link rel="icon" type="image/png" href="assets/logo-square.png" />
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('magplayer-theme');
-        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        document.documentElement.dataset.theme = t;
-      } catch (_) { document.documentElement.dataset.theme = 'dark'; }
-    })();
-  </script>
+  
+  <link rel="canonical" href="https://nexdevstudios.vercel.app/" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="neXStream · Reproductor IPTV Nativo para Android" />
+  <meta property="og:description" content="Reproductor IPTV de última generación para teléfonos y tablets Android desarrollado por NexDev Studios. Construido en Jetpack Compose con aceleración por hardware." />
+  <meta property="og:url" content="https://nexdevstudios.vercel.app/" />
+  <meta property="og:image" content="assets/nexstream-logo.png" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Google Fonts: Poppins (Obligatorio) & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
-  <a class="skip-link" href="#inicio">Saltar al contenido</a>
-  <div class="ambient" aria-hidden="true"></div>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="studio-brand" href="#inicio" aria-label="MagStudios, inicio">
-        <img class="studio-logo" src="assets/logo.png" alt="" width="559" height="447" />
-        <span>Mag<strong>Studios</strong></span>
-      </a>
-      <nav class="nav-links" aria-label="Secciones principales">
-        <a href="#destacado">MagPlayer+</a><a href="#roadmap">Roadmap</a><a href="#apoyar">Apoyar</a><a href="#verificar">Verificar APK</a>
+<body class="nv-home-document">
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <!-- ── Floating Capsule Header (Nuvio-style) ── -->
+  <header class="nv-site-header">
+    <div class="nv-site-header-shell">
+      <!-- Logos de Marca (Estudio y App) -->
+      <div class="nv-brand-combo">
+        <a class="nv-studio-brand" href="#inicio" aria-label="NexDev Studios">
+          <img class="nv-studio-logo" src="assets/nexdevstudios-logo.png" alt="NexDev Studios" width="130" height="32" />
+        </a>
+        <span class="nv-brand-separator" aria-hidden="true">/</span>
+        <a class="nv-app-brand" href="#inicio" aria-label="neXStream">
+          <img class="nv-app-logo" src="assets/nexstream-logo.png" alt="neXStream" width="110" height="28" />
+          <span class="nv-badge">v1.0.0</span>
+        </a>
+      </div>
+
+      <!-- Navegación de escritorio -->
+      <nav class="nv-desktop-nav" aria-label="Navegación principal">
+        <a class="nv-desktop-nav-link is-active" href="#inicio">Inicio</a>
+        <a class="nv-desktop-nav-link" href="#descargar">Descargas</a>
+        <a class="nv-desktop-nav-link" href="#experiencia">Experiencia</a>
+        <a class="nv-desktop-nav-link" href="guia.html">Guía</a>
+        <a class="nv-desktop-nav-link" href="#origen">Origen</a>
+        <a class="nv-desktop-nav-link" href="#comunidad">Comunidad</a>
       </nav>
-      <div class="nav-actions">
-        <details class="mobile-menu">
-          <summary aria-label="Abrir menú de navegación"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></summary>
-          <nav aria-label="Navegación móvil"><a href="#destacado">MagPlayer+</a><a href="#roadmap">Roadmap</a><a href="#apoyar">Apoyar</a><a href="#verificar">Verificar APK</a></nav>
-        </details>
-        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar tema">
-          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-        </button>
-        <a class="button button-primary top-download" href="#destacado">MagPlayer+</a>
+
+      <!-- Botones de Acción -->
+      <div class="nv-desktop-actions">
+        <a class="nv-icon-btn" href="https://github.com/NexDevStudios-repo/neXStream" target="_blank" rel="noopener noreferrer" aria-label="Código fuente en GitHub" title="Ver repositorio en GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+        <a class="nv-login-button" href="#descargar">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span>Descargar APK</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Trigger -->
+      <button class="nv-mobile-menu-button" id="mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Menú desplegable en móvil -->
+      <div class="nv-mobile-menu" id="mobile-menu" hidden>
+        <div class="nv-mobile-nav">
+          <a class="nv-mobile-nav-link" href="#inicio">Inicio</a>
+          <a class="nv-mobile-nav-link" href="#descargar">Descargas APK</a>
+          <a class="nv-mobile-nav-link" href="#experiencia">Experiencia</a>
+          <a class="nv-mobile-nav-link" href="guia.html">Guía de Inicio</a>
+          <a class="nv-mobile-nav-link" href="#origen">Origen & Fork</a>
+          <a class="nv-mobile-nav-link" href="#comunidad">Comunidad & Soporte</a>
+          <a class="nv-mobile-nav-link" href="legal.html">Legal & Privacidad</a>
+          <a class="nv-mobile-nav-link" href="https://github.com/NexDevStudios-repo/neXStream" target="_blank" rel="noopener noreferrer">GitHub Oficial</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <main id="inicio">
-    <section class="studio-hero page-shell">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="pulse"></span> Estudio independiente · Open source</p>
-        <h1>Apps libres para<br /><em>pantallas reales.</em></h1>
-        <p class="hero-lead"><strong>Somos MagStudios</strong>, un estudio independiente que crea aplicaciones open source para móvil, Android TV y escritorio. Desarrollamos herramientas gratuitas, transparentes y pensadas para devolverle el control a quien las usa.</p>
-        <div class="hero-actions">
-          <a class="button button-primary button-large" href="#destacado">Conocer nuestros trabajos</a>
-          <a class="button button-quiet button-large" href="#roadmap">Ver el Roadmap</a>
-        </div>
-      </div>
-      <div class="studio-manifesto" aria-label="Manifiesto de MagStudios">
-        <img class="manifesto-logo" src="assets/logo.png" alt="" width="559" height="447" aria-hidden="true" />
-        <p>Construimos en público.</p><strong>Sin funciones premium.<br />Sin jardines cerrados.<br />Sin costo.</strong><span>MagStudios / catálogo <b>2026</b></span>
-      </div>
-    </section>
+  <main id="main-content">
+    <!-- ── Hero Section (Mobile Focused) ── -->
+    <section id="inicio" class="nv-hero">
+      <div class="nv-wrap nv-hero-inner">
+        <div class="nv-hero-copy">
+          <div class="nv-pill-tag">
+            <span class="nv-pulse-glow" aria-hidden="true"></span>
+            <span>Android Mobile · Smartphones & Tablets</span>
+          </div>
 
-    <!-- ── Principios de MagStudios ── -->
-    <section class="principles page-shell" aria-label="Principios de MagStudios">
-      <article><span>01</span><div><strong>Código abierto</strong><small>Proyectos auditables y construidos con transparencia.</small></div></article>
-      <article><span>02</span><div><strong>Gratis de verdad</strong><small>Sin recortar la experiencia para vender una versión superior.</small></div></article>
-      <article><span>03</span><div><strong>Privacidad local</strong><small>Primero el dispositivo y la red de la persona, no nuestros servidores.</small></div></article>
-    </section>
+          <h1 class="nv-display">
+            Tu IPTV, llevado a la perfección móvil.
+          </h1>
 
-    <!-- ── App Destacada (MagPlayer+) ── -->
-    <section id="destacado" class="section page-shell">
-      <header class="section-heading">
-        <p class="eyebrow">Catálogo actual</p>
-        <h2>MagPlayer+: Nuestro producto activo.</h2>
-        <p>El centro multimedia open source que concentra hoy todo el soporte y desarrollo activo de MagStudios.</p>
-      </header>
-      <article id="magplayer" class="featured-product">
-        <div class="product-visual">
-          <img src="assets/capturas/mobile/01-inicio.jpg" alt="Pantalla de inicio de MagPlayer+ en un teléfono" width="576" height="1280" loading="lazy" />
+          <p class="nv-lede">
+            Un reproductor multimedia moderno, libre y ultrafluido diseñado exclusivamente para teléfonos y tablets Android con Jetpack Compose y Material You. Conéctate a tus servidores Xtream Codes o listas M3U y disfruta TV en Vivo, Películas y Series con zapping instantáneo y decodificación por hardware con ExoPlayer.
+          </p>
+
+          <div class="nv-hero-actions">
+            <a class="nv-btn nv-btn-primary" href="#descargar">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              <span>Descargar APK</span>
+            </a>
+            <a class="nv-btn nv-btn-ghost" href="https://github.com/NexDevStudios-repo/neXStream" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span>Ver Código Fuente</span>
+            </a>
+          </div>
+
+          <p class="nv-hero-note">
+            Software libre bajo GNU GPLv3. neXStream no proporciona, aloja ni vende listas ni contenidos de streaming.
+          </p>
         </div>
-        <div class="product-copy">
-          <div class="product-title-row">
-            <img class="app-icon" src="assets/logo.png" alt="Logo de MagStudios" width="559" height="447" />
-            <div>
-              <span class="status available"><i></i> Producto Insignia · Open Source</span>
-              <h3>MagPlayer+</h3>
+
+        <!-- Escenario Visual del Hero con Teléfono Real -->
+        <div class="nv-stage" aria-hidden="true">
+          <div class="nv-stage-glow"></div>
+          <div class="nv-stage-device">
+            <div class="nv-phone-mockup">
+              <div class="nv-phone-camera"></div>
+              <img class="nv-phone-display" src="assets/capturas/nexstream/screen-1.jpg" alt="neXStream Pantalla de Inicio en teléfono Android" width="576" height="1280" fetchpriority="high" />
             </div>
           </div>
-          <p class="product-intro">El centro multimedia open source de MagStudios. Reúne listas IPTV, canales, películas, series, música y vídeos del dispositivo en experiencias propias para móvil, Android TV y Linux.</p>
-          <ul class="feature-list">
-            <li><b>M3U y Xtream Codes</b><span>Añadí enlaces, servidores con credenciales o archivos M3U, M3U8 y TXT.</span></li>
-            <li><b>Canales y catálogo VOD</b><span>Explorá categorías, EPG, películas, series, temporadas y episodios.</span></li>
-            <li><b>Biblioteca del dispositivo</b><span>Organizá música, vídeos, carpetas, favoritos y playlists locales.</span></li>
-            <li><b>Tres motores reales</b><span>ExoPlayer y LibVLC en Android; mpv en Linux, con respaldo automático.</span></li>
-            <li><b>MultiView y grabación</b><span>Reproducí dos o cuatro canales y guardá directos compatibles en la biblioteca.</span></li>
-            <li><b>MagPlayer+ Connect</b><span>Controlá y transferí la reproducción entre dispositivos de la misma red.</span></li>
-            <li><b>Subtítulos y pistas</b><span>Elegí pistas y ajustá idioma, tamaño, posición y sincronización.</span></li>
-            <li><b>Control parental</b><span>Protección con PIN y detección de categorías, títulos y descripciones.</span></li>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Selector de Descargas Móviles (Arquitectura del Procesador) ── -->
+    <section id="descargar" class="nv-wrap nv-section" aria-labelledby="nv-downloads-title">
+      <div class="nv-section-head">
+        <h2 id="nv-downloads-title" class="nv-h2">Descarga neXStream para Android.</h2>
+        <p class="nv-body">Selecciona el paquete óptimo para tu dispositivo móvil. Descargas directas, paquetes verificados y firmados oficialmente desde GitHub Releases. Si es tu primera vez, consulta nuestra <a class="nv-link" href="guia.html">Guía de Inicio Rápido</a>.</p>
+      </div>
+
+      <!-- Switcher interactivo de arquitecturas móviles -->
+      <div class="nv-screen-switcher">
+        <div class="nv-switch" role="tablist" aria-label="Selecciona la arquitectura de tu teléfono o tablet">
+          <button class="nv-tab-btn is-active" role="tab" id="tab-universal" aria-selected="true" aria-controls="panel-universal">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A7 7 0 0 1 5.07 11H5a1 1 0 0 1 0-2h.07A7 7 0 0 1 11 5.07V5a1 1 0 0 1 2 0v.07A7 7 0 0 1 18.93 11H19a1 1 0 0 1 0 2h-.07A7 7 0 0 1 13 16.93z"/></svg>
+            <span>Universal (Recomendado)</span>
+          </button>
+          <button class="nv-tab-btn" role="tab" id="tab-arm64" aria-selected="false" aria-controls="panel-arm64">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <span>ARM64 (64-bit Móvil)</span>
+          </button>
+          <button class="nv-tab-btn" role="tab" id="tab-arm32" aria-selected="false" aria-controls="panel-arm32">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <span>ARM32 (32-bit Móvil)</span>
+          </button>
+        </div>
+
+        <!-- Paneles de Descarga -->
+        <div class="nv-panels-wrapper">
+          <!-- Panel 1: Universal -->
+          <div class="nv-panel is-visible" id="panel-universal" role="tabpanel" aria-labelledby="tab-universal">
+            <div class="nv-panel-copy">
+              <span class="nv-panel-tag">Compatibilidad Universal</span>
+              <h3>neXStream <span class="app-version-tag">v1.0.0</span> Universal APK</h3>
+              <p>El paquete completo para teléfonos y tablets Android. Incluye librerías nativas para todas las arquitecturas móviles. Instálalo directamente si no sabes qué procesador tiene tu teléfono.</p>
+              <div class="nv-spec-chips">
+                <span class="nv-chip" data-arch-size="universal">Peso: 165 MB</span>
+                <span class="nv-chip" data-arch-version>Versión: v1.0.0</span>
+                <span class="nv-chip">Android 8.0+</span>
+                <span class="nv-chip nv-chip-success">Firma Oficial Verificada</span>
+              </div>
+            </div>
+            <div class="nv-panel-actions">
+              <a class="nv-btn nv-btn-primary" data-arch-btn="universal" href="https://github.com/NexDevStudios-repo/neXStream/releases/download/v1.0.0/neXStream-1.0.0-universal.apk">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                <span data-arch-text="universal">Descargar APK Universal (165 MB)</span>
+              </a>
+              <a class="nv-btn nv-btn-ghost" data-release-notes-link href="https://github.com/NexDevStudios-repo/neXStream/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
+                <span>Notas de la versión <span class="app-version-tag">v1.0.0</span></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Panel 2: ARM64 -->
+          <div class="nv-panel" id="panel-arm64" role="tabpanel" aria-labelledby="tab-arm64" hidden>
+            <div class="nv-panel-copy">
+              <span class="nv-panel-tag">Máximo Rendimiento Móvil</span>
+              <h3>neXStream <span class="app-version-tag">v1.0.0</span> ARM64-v8a</h3>
+              <p>Compilado y optimizado exclusivamente para procesadores móviles de 64 bits (la gran mayoría de smartphones y tablets actuales). Ofrece la mayor velocidad de ejecución y un menor peso de instalación.</p>
+              <div class="nv-spec-chips">
+                <span class="nv-chip" data-arch-size="arm64">Peso: 95 MB</span>
+                <span class="nv-chip" data-arch-version>Versión: v1.0.0</span>
+                <span class="nv-chip">ARM64-v8a</span>
+                <span class="nv-chip nv-chip-success">Optimizado 64-bit</span>
+              </div>
+            </div>
+            <div class="nv-panel-actions">
+              <a class="nv-btn nv-btn-primary" data-arch-btn="arm64" href="https://github.com/NexDevStudios-repo/neXStream/releases/download/v1.0.0/neXStream-1.0.0-arm64-v8a.apk">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                <span data-arch-text="arm64">Descargar APK ARM64 (95 MB)</span>
+              </a>
+              <a class="nv-btn nv-btn-ghost" data-release-notes-link href="https://github.com/NexDevStudios-repo/neXStream/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
+                <span>Notas de la versión <span class="app-version-tag">v1.0.0</span></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Panel 3: ARM32 -->
+          <div class="nv-panel" id="panel-arm32" role="tabpanel" aria-labelledby="tab-arm32" hidden>
+            <div class="nv-panel-copy">
+              <span class="nv-panel-tag">Para Dispositivos de 32 bits</span>
+              <h3>neXStream <span class="app-version-tag">v1.0.0</span> ARMEABI-v7a</h3>
+              <p>Creado para smartphones o tablets Android que cuenten con procesadores o sistemas operativos de 32 bits. Garantiza compatibilidad sin sobrecargar la memoria del terminal.</p>
+              <div class="nv-spec-chips">
+                <span class="nv-chip" data-arch-size="arm32">Peso: 93 MB</span>
+                <span class="nv-chip" data-arch-version>Versión: v1.0.0</span>
+                <span class="nv-chip">ARMEABI-v7a</span>
+                <span class="nv-chip">Móvil 32-bit</span>
+              </div>
+            </div>
+            <div class="nv-panel-actions">
+              <a class="nv-btn nv-btn-primary" data-arch-btn="arm32" href="https://github.com/NexDevStudios-repo/neXStream/releases/download/v1.0.0/neXStream-1.0.0-armeabi-v7a.apk">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                <span data-arch-text="arm32">Descargar APK ARM32 (93 MB)</span>
+              </a>
+              <a class="nv-btn nv-btn-ghost" data-release-notes-link href="https://github.com/NexDevStudios-repo/neXStream/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">
+                <span>Notas de la versión <span class="app-version-tag">v1.0.0</span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── La Experiencia Real: Las 4 Secciones de la App neXStream ── -->
+    <section id="experiencia" class="nv-wrap nv-section" aria-labelledby="nv-features-title">
+      <div class="nv-section-head nv-section-head-centered">
+        <h2 id="nv-features-title" class="nv-h2">La experiencia real de neXStream.</h2>
+        <p class="nv-body">neXStream no distribuye ni vende listas de contenido. Tú agregas tus credenciales o listas y nosotros te entregamos la interfaz móvil más ágil, elegante y moderna de Android.</p>
+      </div>
+
+      <!-- Sección 1: Inicio (Catálogo) -->
+      <article class="nv-feature">
+        <div class="nv-feature-copy">
+          <span class="nv-feature-badge">Pantalla de Inicio</span>
+          <h3 class="nv-h3">Catálogo en vivo y contenido destacado al alcance.</h3>
+          <p class="nv-body">
+            Tu entretenimiento organizado desde el primer instante. Accede a TV en Vivo, Películas y Series en pestañas dinámicas con acceso a destacados en cabecera y carruseles categorizados sin pantallas de espera.
+          </p>
+          <ul class="nv-feature-list">
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Acceso directo y fluido entre TV en Vivo, Películas y Series</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Destacados en cabecera con acceso inmediato a detalles y sinopsis</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Navegación gestual táctil nativa en Jetpack Compose a 120Hz</span>
+            </li>
           </ul>
-          <div class="release-meta"><span>Distribución oficial <strong>MagStudios</strong></span><span>Versión 3.0.1</span></div>
-          <div class="download-counter" data-download-counter aria-live="polite" aria-busy="true">
-            <span class="download-counter-label">Descargas oficiales</span>
-            <strong class="download-counter-value" data-download-count>Consultando…</strong>
-            <span class="download-counter-context" data-download-context>de las APK publicadas</span>
+        </div>
+        <div class="nv-feature-art">
+          <div class="nv-phone-mockup">
+            <div class="nv-phone-camera"></div>
+            <img class="nv-phone-display" src="assets/capturas/nexstream/screen-1.jpg" alt="neXStream - Pantalla de Inicio y Catálogo" loading="lazy" width="576" height="1280" />
           </div>
+        </div>
+      </article>
 
-          <div class="download-stack" id="descargar">
-            <!-- Fila 1: 3 versiones APK juntas -->
-            <div class="apk-download-grid">
-              <a class="button button-primary" href="https://github.com/MagStudios-repo/MagPlayerPlus/releases/download/v3.0.1/app-arm64-v8a-release.apk" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                <span>ARM64 <small>(64-bit)</small></span>
-              </a>
-              <a class="button button-primary" href="https://github.com/MagStudios-repo/MagPlayerPlus/releases/download/v3.0.1/app-armeabi-v7a-release.apk" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                <span>ARMv7 <small>(32-bit)</small></span>
-              </a>
-              <a class="button button-primary" href="https://github.com/MagStudios-repo/MagPlayerPlus/releases/download/v3.0.1/app-x86_64-release.apk" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
-                <span>x86_64 <small>(PC/Emu)</small></span>
-              </a>
-            </div>
-
-            <!-- Fila 2: Linux ocupando el ancho completo de los 3 botones -->
-            <button class="button-linux-full" type="button" disabled aria-label="Descarga para Linux basado en Debian no disponible todavía">
-              <img src="assets/platforms/debian.png" alt="" width="20" height="20" />
-              <span>Linux basado en Debian (Ubuntu / Mint)</span>
-              <span class="badge-tag">Próximamente</span>
-            </button>
-
-            <!-- Fila 3: 2 botones secundarios debajo de Linux -->
-            <div class="secondary-actions-grid">
-              <a class="button button-quiet" href="https://github.com/MagStudios-repo/MagPlayerPlus" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                <span>Código fuente <span aria-hidden="true">↗</span></span>
-              </a>
-              <a class="button button-quiet" href="magplayer.html">
-                <span>Conocé MagPlayer+ <span aria-hidden="true">→</span></span>
-              </a>
-            </div>
+      <!-- Sección 2: Buscar (Descubrimiento y Filtros) -->
+      <article class="nv-feature nv-feature-flip">
+        <div class="nv-feature-copy">
+          <span class="nv-feature-badge">Buscar & Descubrir</span>
+          <h3 class="nv-h3">Búsqueda veloz y filtrado por tipo de contenido.</h3>
+          <p class="nv-body">
+            Un motor de búsqueda instantáneo diseñado para listas con miles de elementos. Filtra rápidamente por Canales de TV, Contenido VOD o Series, explora por categorías ordenadas y revisa el Top 10 de tu proveedor.
+          </p>
+          <ul class="nv-feature-list">
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Filtrado instantáneo por Canales, Películas o Series en un toque</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Categorías temáticas organizadas y listados Top 10 actualizados</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Cuadrícula moderna de pósters con caché asíncrono y sin tirones</span>
+            </li>
+          </ul>
+        </div>
+        <div class="nv-feature-art">
+          <div class="nv-phone-mockup">
+            <div class="nv-phone-camera"></div>
+            <img class="nv-phone-display" src="assets/capturas/nexstream/screen-2.jpg" alt="neXStream - Pantalla de Buscar y Descubrir" loading="lazy" width="576" height="1280" />
           </div>
+        </div>
+      </article>
 
-          <p class="content-disclaimer">MagPlayer+ no aloja, vende ni distribuye canales, listas o contenido. Reproduce los archivos y fuentes que cada persona incorpora por su cuenta.</p>
+      <!-- Sección 3: Biblioteca (Favoritos) -->
+      <article class="nv-feature">
+        <div class="nv-feature-copy">
+          <span class="nv-feature-badge">Biblioteca Personal</span>
+          <h3 class="nv-h3">Tus contenidos favoritos, siempre a mano.</h3>
+          <p class="nv-body">
+            Guarda tus canales indispensables y tus películas o series predilectas en tu espacio personal. No vuelvas a perder tiempo navegando interminables listas de reproducción de tu proveedor IPTV.
+          </p>
+          <ul class="nv-feature-list">
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Acceso directo a tus contenidos favoritos con un solo toque</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Organización separada para Canales en Vivo, Películas y Series guardadas</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Almacenamiento 100% local en tu dispositivo con privacidad absoluta</span>
+            </li>
+          </ul>
+        </div>
+        <div class="nv-feature-art">
+          <div class="nv-phone-mockup">
+            <div class="nv-phone-camera"></div>
+            <img class="nv-phone-display" src="assets/capturas/nexstream/screen-3.jpg" alt="neXStream - Pantalla de Biblioteca y Favoritos" loading="lazy" width="576" height="1280" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Sección 4: Ajustes (Configuración y Actualizador) -->
+      <article class="nv-feature nv-feature-flip">
+        <div class="nv-feature-copy">
+          <span class="nv-feature-badge">Ajustes & Control</span>
+          <h3 class="nv-h3">Configuración total, perfiles y actualizador integrado.</h3>
+          <p class="nv-body">
+            Gestiona tus servidores Xtream Codes, personaliza la paleta de colores Material You, calibra los buffers de streaming para conexiones móviles inestables y actualiza la app directamente desde GitHub.
+          </p>
+          <ul class="nv-feature-list">
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Gestión de múltiples servidores Xtream Codes y credenciales seguras</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Ajustes avanzados de búfer de reproducción, EPG y decodificación por hardware</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Actualizador in-app conectado a GitHub Releases sin depender de Google Play</span>
+            </li>
+          </ul>
+        </div>
+        <div class="nv-feature-art">
+          <div class="nv-phone-mockup">
+            <div class="nv-phone-camera"></div>
+            <img class="nv-phone-display" src="assets/capturas/nexstream/screen-4.jpg" alt="neXStream - Pantalla de Ajustes y Configuración" loading="lazy" width="576" height="1280" />
+          </div>
         </div>
       </article>
     </section>
 
-    <!-- ── Roadmap de MagStudios (Vertical Timeline) ── -->
-    <section id="roadmap" class="section page-shell" aria-label="Roadmap y proyectos de MagStudios">
-      <header class="section-heading"><p class="eyebrow">Hoja de ruta</p><h2>Roadmap de desarrollo.</h2><p>El plan de evolución de MagStudios: nuestro producto insignia en mejora continua y las próximas herramientas del catálogo.</p></header>
-
-      <div class="timeline-container">
-        <!-- Hito 1: MagPlayer+ (Activo) -->
-        <article class="timeline-item is-active">
-          <div class="timeline-marker" aria-hidden="true">
-            <div class="timeline-dot">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <span class="status available"><i></i> Producto Insignia · Activo (v3.0.1)</span>
-              <span class="timeline-version-tag">Lanzamiento Continuo</span>
-            </div>
-            <h3>MagPlayer+</h3>
-            <p class="timeline-lead">El centro multimedia open source de MagStudios. Diseñado especialmente para pantallas táctiles, Smart TVs y escritorio sin publicidad ni intermediarios.</p>
-            <div class="timeline-features-grid">
-              <div class="timeline-feature-item">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><strong>Actualizador in-app</strong> con verificación SHA-256</span>
-              </div>
-              <div class="timeline-feature-item">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><strong>Motor dual</strong> ExoPlayer + LibVLC en Android</span>
-              </div>
-              <div class="timeline-feature-item">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><strong>Biblioteca local</strong> con Favoritos y audio</span>
-              </div>
-              <div class="timeline-feature-item">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
-                <span><strong>MultiView</strong> (2-4 canales) y grabación</span>
-              </div>
-              <div class="timeline-feature-item in-progress">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/></svg>
-                <span><strong>En desarrollo:</strong> Versión nativa Linux (Debian)</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Hito 2: MagSend -->
-        <article class="timeline-item">
-          <div class="timeline-marker" aria-hidden="true">
-            <div class="timeline-dot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h11m0 0-4-4m4 4-4 4M17 17H6m0 0 4 4m-4-4 4-4"/></svg>
-            </div>
-          </div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <span class="status building"><i></i> En desarrollo · Beta Interna</span>
-              <span class="timeline-version-tag">Fase 02</span>
-            </div>
-            <h3>MagSend</h3>
-            <p class="timeline-lead">Transferencia directa de archivos de alta velocidad entre dispositivos conectados a la misma red Wi-Fi. Sin límites de peso, sin almacenamiento en la nube y sin compresión.</p>
-            <div class="timeline-features-grid">
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Descubrimiento automático</strong> mDNS en red local</span>
-              </div>
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Protocolo por bloques</strong> con reanudación ante cortes</span>
-              </div>
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Multi-plataforma:</strong> Android TV, móvil y PC</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Hito 3: MagSearch -->
-        <article class="timeline-item">
-          <div class="timeline-marker" aria-hidden="true">
-            <div class="timeline-dot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/><circle cx="11" cy="14" r="2.5"/><path d="m13 16 2.5 2.5"/></svg>
-            </div>
-          </div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <span class="status concept"><i></i> Próximamente · Arquitectura</span>
-              <span class="timeline-version-tag">Fase 03</span>
-            </div>
-            <h3>MagSearch</h3>
-            <p class="timeline-lead">Un navegador web diseñado desde cero para Android TV. Navegación fluida 100% mediante control remoto (D-Pad), tipografía optimizada para lectura a distancia y bloqueo integrado de rastreadores.</p>
-            <div class="timeline-features-grid">
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Navegación espacial D-pad</strong> sin puntero virtual</span>
-              </div>
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Modo lectura inmersivo</strong> para TV y sala</span>
-              </div>
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Privacidad estricta</strong> sin registros externos</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Hito 4: MagChat+ -->
-        <article class="timeline-item">
-          <div class="timeline-marker" aria-hidden="true">
-            <div class="timeline-dot">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 17H6l-3 3v-5.5A7 7 0 0 1 5 5a7 7 0 0 1 10.7 1.2"/><path d="M21 13a6 6 0 0 1-6 6h-1.5L10 21v-8a6 6 0 1 1 11 0Z"/><path d="M14 13h.01M17 13h.01"/></svg>
-            </div>
-          </div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <span class="status concept"><i></i> Investigación · Protocolo P2P</span>
-              <span class="timeline-version-tag">Fase 04</span>
-            </div>
-            <h3>MagChat+</h3>
-            <p class="timeline-lead">Mensajería descentralizada y cifrada de extremo a extremo sin base de datos central. Red mallada (Mesh) vía Bluetooth/Wi-Fi Direct en cercanía y transporte cifrado a distancia.</p>
-            <div class="timeline-features-grid">
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Sin teléfono:</strong> cuentas por llave criptográfica</span>
-              </div>
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Red Mesh:</strong> comunicación sin internet en cercanía</span>
-              </div>
-              <div class="timeline-feature-item planned">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                <span><strong>Soberanía total:</strong> llamadas y textos cifrados</span>
-              </div>
-            </div>
-          </div>
-        </article>
+    <!-- ── Motores y Estándares de Rendimiento ── -->
+    <section class="nv-wrap nv-section nv-divided">
+      <div class="nv-section-head nv-section-head-centered">
+        <h2 class="nv-h2">Tecnología nativa de última generación.</h2>
+        <p class="nv-body">Construido con las librerías más avanzadas del ecosistema de Android y Kotlin Multiplatform.</p>
       </div>
 
-      <div class="open-promise"><span>Compromiso MagStudios</span><strong>Más aplicaciones. Todas open source. Todas 100% gratuitas.</strong></div>
+      <div class="nv-tech-grid">
+        <div class="nv-tech-card">
+          <div class="nv-tech-icon accent-violet">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <h4>Media3 ExoPlayer</h4>
+          <p>Decodificación por hardware de transmisiones HLS y MPEG-TS con latencia ultra baja, búfer optimizado y zapping instantáneo.</p>
+        </div>
+
+        <div class="nv-tech-card">
+          <div class="nv-tech-icon accent-cyan">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h4>Jetpack Compose</h4>
+          <p>Interfaz táctil declarativa construida con Material You que responde con animaciones fluidas a 120Hz en pantallas móviles.</p>
+        </div>
+
+        <div class="nv-tech-card">
+          <div class="nv-tech-icon accent-emerald">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h4>Xtream Codes Nativo</h4>
+          <p>Conexión directa a servidores Xtream con sincronización completa de categorías en vivo, películas, series y guía EPG.</p>
+        </div>
+
+        <div class="nv-tech-card">
+          <div class="nv-tech-icon accent-amber">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          </div>
+          <h4>Actualizador Integrado</h4>
+          <p>Descarga e instalación de nuevas versiones oficiales directamente desde el repositorio en GitHub sin tiendas de aplicaciones.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- ── Apoyo Voluntario ── -->
-    <section id="apoyar" class="section support-section">
-      <div class="page-shell">
-        <header class="section-heading centered-heading"><p class="eyebrow">Apoyo voluntario</p><h2>Las apps son gratis. Tu apoyo las hace crecer.</h2><p>MagStudios desarrolla proyectos open source sin vender listas, contenido ni ventajas exclusivas. Cada aporte ayuda a sostener el desarrollo, infraestructura y pruebas.</p></header>
-        <div class="support-grid">
-          <div class="support-copy">
-            <div class="support-logo"><img src="assets/logo.png" alt="" width="559" height="447" loading="lazy" /></div>
-            <h3>Apoyás al estudio, no comprás contenido.</h3>
-            <p>Los aportes no desbloquean funciones ni incluyen servidores. MagPlayer+ reproduce las fuentes y archivos que cada persona incorpora por su cuenta.</p>
-            <div class="support-contact-actions"><a class="button button-quiet" href="https://t.me/+Wua5dPKBPJEzNmIx" target="_blank" rel="noopener">Comunidad en Telegram</a><a class="button button-quiet" href="mailto:soportemagstudiosoficial@gmail.com">Correo de soporte</a></div>
-          </div>
-          <div class="support-panel">
-            <div class="support-option">
-              <span class="support-kicker">Membresía mensual</span>
-              <h3>Apoyo recurrente en Patreon</h3>
-              <p>Patreon es la única membresía oficial de MagStudios. Podés administrar o cancelar tu suscripción desde tu cuenta.</p>
-              <a class="button button-primary button-large" href="https://www.patreon.com/cw/MagStudios622/membership" target="_blank" rel="noopener">Ver membresía en Patreon</a>
+    <!-- ── Origen & Fork de Nuvio (Transparencia Open Source) ── -->
+    <section id="origen" class="nv-band">
+      <div class="nv-wrap nv-section">
+        <div class="nv-fork-box">
+          <div class="nv-fork-copy">
+            <span class="nv-panel-tag">Transparencia y Open Source</span>
+            <h2 class="nv-h2">Por qué neXStream nació como un fork de Nuvio.</h2>
+            <p class="nv-body">
+              <strong>Nuvio Mobile</strong> diseñó una arquitectura ejemplar en Kotlin Multiplatform y Jetpack Compose con un reproductor multimedia altamente optimizado.
+            </p>
+            <p class="nv-body">
+              Sin embargo, Nuvio fue concebido como un agregador P2P/torrents, servicios debrid y plugins en JavaScript. En <strong>NexDev Studios</strong> tomamos esa base técnica, eliminamos por completo la sobrecarga de torrents y creamos un <strong>reproductor IPTV puro, ligero y directo</strong> para Android.
+            </p>
+
+            <div class="nv-stat-row">
+              <div class="nv-stat">
+                <b>0%</b>
+                <span>P2P / Torrents (Eliminado)</span>
+              </div>
+              <div class="nv-stat">
+                <b>100%</b>
+                <span>Enfocado en Xtream IPTV</span>
+              </div>
+              <div class="nv-stat">
+                <b>GPL-3.0</b>
+                <span>Licencia Pública GNU</span>
+              </div>
             </div>
-            <div class="support-divider"><span>Aportes únicos</span></div>
-            <div class="support-once">
-              <a class="cafecito-button" href="https://cafecito.app/magstudiosoficial" target="_blank" rel="noopener"><img src="https://cdn.cafecito.app/imgs/buttons/button_1.png" srcset="https://cdn.cafecito.app/imgs/buttons/button_1.png 1x, https://cdn.cafecito.app/imgs/buttons/button_1_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_1_3.75x.png 3.75x" alt="Invitame un café en Cafecito" width="176" height="36" loading="lazy" /></a>
-              <a class="button-paypal" href="https://www.paypal.com/donate/?hosted_button_id=MSHVTHZZLTSFN&amp;locale.x=es_ES" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.808 1.614 1.163 1.013 1.637 2.457 1.411 4.29-.443 3.6-2.88 5.434-7.242 5.451h-2.14c-.454 0-.835.334-.906.786l-.887 5.626a.641.641 0 0 1-.633.541z"/><path fill="#0079C1" d="M8.708 17.585l.77-4.887a.91.91 0 0 1 .906-.786h2.14c4.362-.017 6.799-1.85 7.242-5.451.226-1.833-.248-3.277-1.411-4.29C17.125 1.099 15.117.556 12.547.556H5.998c-.524 0-.972.382-1.054.901L1.837 20.597a.641.641 0 0 0 .633.74h4.606l1.09-6.91a.641.641 0 0 1 .633-.542h1.688c3.965 0 7.07-1.611 7.973-6.28.378-1.956.035-3.585-1.02-4.717-.238 1.704-1.374 3.033-3.21 3.824-1.077.464-2.452.699-4.089.699h-1.44a.64.64 0 0 0-.633.541l-.975 6.183z"/></svg>
-                <span>Donar con PayPal</span>
-              </a>
+          </div>
+
+          <div class="nv-fork-cards">
+            <div class="nv-change-card nv-change-removed">
+              <h5>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Lo que se eliminó
+              </h5>
+              <ul>
+                <li>Motores de torrents y conexiones P2P</li>
+                <li>Integraciones debrid (Real-Debrid, TorBox, Premiumize)</li>
+                <li>Entornos de ejecución de plugins externos (JS/WASM)</li>
+                <li>Procesos en segundo plano y consumo innecesario de batería</li>
+              </ul>
+            </div>
+
+            <div class="nv-change-card nv-change-added">
+              <h5>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Lo que se perfeccionó
+              </h5>
+              <ul>
+                <li>API nativa de Xtream Codes (En Vivo, VOD, Series, EPG)</li>
+                <li>Cajón lateral de canales durante la reproducción en directo</li>
+                <li>Ajustes de buffers adaptativos para streaming móvil</li>
+                <li>Actualizador in-app conectado a NexDevStudios-repo</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── Verificador de APK (SHA-256) ── -->
-    <section id="verificar" class="section verify-section" aria-label="Verificador de seguridad de APK">
-      <div class="page-shell verify-layout">
-        <div>
-          <p class="eyebrow">Seguridad e integridad</p>
-          <h2>Verificá tu APK antes de instalarlo.</h2>
+    <!-- ── Comunidad Oficial & Canales de Contacto ── -->
+    <section id="comunidad" class="nv-wrap nv-section" aria-labelledby="nv-community-title">
+      <div class="nv-section-head nv-section-head-centered">
+        <h2 id="nv-community-title" class="nv-h2">Conéctate con NexDev Studios.</h2>
+        <p class="nv-body">Sigue las actualizaciones, consulta dudas técnicas o envía sugerencias directamente en nuestros canales oficiales.</p>
+      </div>
+
+      <div class="nv-social-grid">
+        <!-- Telegram Oficial -->
+        <a class="nv-social-card" href="https://t.me/+C_ZyoLwgMi1iNjRh" target="_blank" rel="noopener noreferrer">
+          <div class="nv-social-icon telegram-bg">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+            </svg>
+          </div>
+          <div class="nv-social-info">
+            <h4>Canal de Telegram</h4>
+            <p>Anuncios de nuevas versiones, changelogs y soporte comunitario.</p>
+            <span class="nv-social-link">Unirse al canal oficial &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Instagram Oficial -->
+        <a class="nv-social-card" href="https://instagram.com/nexdevstudios_" target="_blank" rel="noopener noreferrer">
+          <div class="nv-social-icon instagram-bg">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
+          <div class="nv-social-info">
+            <h4>Instagram Oficial</h4>
+            <p>@nexdevstudios_ · Lanzamientos, historias y avances del proyecto.</p>
+            <span class="nv-social-link">Seguir en Instagram &rarr;</span>
+          </div>
+        </a>
+
+        <!-- X (Twitter) Oficial -->
+        <a class="nv-social-card" href="https://x.com/nexdevstudios_" target="_blank" rel="noopener noreferrer">
+          <div class="nv-social-icon x-bg">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </div>
+          <div class="nv-social-info">
+            <h4>X (Twitter) Oficial</h4>
+            <p>@nexdevstudios_ · Actualizaciones en tiempo real y soporte comunitario.</p>
+            <span class="nv-social-link">Seguir en X &rarr;</span>
+          </div>
+        </a>
+
+        <!-- Correo de Soporte Oficial (Con Card Anti-Desborde) -->
+        <a class="nv-social-card nv-email-card" href="mailto:soportenexdevstudiosoficial@gmail.com">
+          <div class="nv-social-icon email-bg">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="nv-social-info">
+            <h4>Correo de Soporte</h4>
+            <div class="nv-email-badge">
+              <span>soportenexdevstudiosoficial@gmail.com</span>
+            </div>
+            <p>Asistencia técnica directa para consultas y reporte de incidencias.</p>
+            <span class="nv-social-link">Enviar correo electrónico &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── Disclaimer y Aviso Legal (Neutralidad de Software Libre) ── -->
+    <section class="nv-band">
+      <div class="nv-wrap nv-section nv-legal-section">
+        <h3>Qué es y qué no es neXStream.</h3>
+        <div class="nv-legal-grid">
           <p>
-            Comprobá la autenticidad de cualquier paquete de MagPlayer+. Seleccioná
-            o arrastrá el archivo <code>.apk</code> descargado para calcular su huella SHA-256
-            localmente en tu navegador sin subirlo a ningún servidor.
+            neXStream es una aplicación cliente multimedia de código abierto para dispositivos Android. Navega metadatos y reproduce flujos de video provistos exclusivamente por los servidores y listas que el propio usuario ingresa bajo su propia responsabilidad.
           </p>
-          <div class="official-hash">
-            <span>Repositorio oficial de lanzamientos</span>
-            <button class="copy-button" type="button" id="copy-repo-btn" aria-label="Copiar enlace del repositorio oficial">Copiar enlace</button>
-            <code id="official-repo-link">https://github.com/MagStudios-repo/MagPlayerPlus/releases</code>
-          </div>
-        </div>
-
-        <div>
-          <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Arrastrá o seleccioná un APK para verificar su hash SHA-256">
-            <input type="file" id="apk-input" accept=".apk" style="display: none;" />
-            <div class="drop-icon" aria-hidden="true">#</div>
-            <strong>Arrastrá tu archivo APK aquí</strong>
-            <small>o hacé clic para seleccionarlo desde tu dispositivo</small>
-          </div>
-          <div id="verify-result" class="verify-result" aria-live="polite"></div>
+          <p>
+            neXStream y NexDev Studios no tienen afiliación alguna con proveedores de contenido ni servicios de IPTV de terceros, y no distribuyen ni precargan listas de canales de ningún tipo.
+          </p>
+          <p>
+            Las capturas de pantalla mostradas en esta web corresponden a la versión móvil oficial en funcionamiento con datos de demostración. Código fuente auditado disponible bajo los términos de la Licencia Pública General GNU v3.0 (GPL-3.0).
+          </p>
+          <p>
+            Para más detalles sobre términos de uso y neutralidad tecnológica, puedes consultar nuestra <a class="nv-link" href="legal.html">página de información legal y términos</a>.
+          </p>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ── Footer ── -->
+  <footer class="nv-footer">
+    <div class="nv-wrap">
+      <div class="nv-footer-inner">
+        <div class="nv-footer-brand">
+          <div class="nv-footer-logos">
+            <img class="nv-footer-studio-logo" src="assets/nexdevstudios-logo.png" alt="NexDev Studios" width="130" height="32" loading="lazy" />
+            <span class="nv-brand-separator" aria-hidden="true">/</span>
+            <img class="nv-footer-app-logo" src="assets/nexstream-logo.png" alt="neXStream" width="110" height="28" loading="lazy" />
+          </div>
+          <p class="nv-footer-copy">
+            &copy; 2026 <strong>NexDev Studios</strong> · Desarrollado con orgullo bajo licencia <a class="nv-link" href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer">GNU GPLv3</a>.
+          </p>
+        </div>
 
-  <footer class="footer"><div class="page-shell footer-grid"><div><a class="studio-brand footer-brand" href="#inicio"><img class="studio-logo" src="assets/logo.png" alt="" width="559" height="447" /><span>Mag<strong>Studios</strong></span></a><p>Estudio independiente creador de aplicaciones open source para móvil, televisión y escritorio.</p></div><nav aria-label="Redes y contacto de MagStudios"><a href="https://github.com/MagStudios-repo" target="_blank" rel="noopener">GitHub Oficial</a><a href="mailto:soportemagstudiosoficial@gmail.com">soportemagstudiosoficial@gmail.com</a><a href="https://www.instagram.com/magstudios_oficial" target="_blank" rel="noopener">Instagram</a><a href="https://x.com/MagStudios_ok" target="_blank" rel="noopener">X</a><a href="https://t.me/+Wua5dPKBPJEzNmIx" target="_blank" rel="noopener">Telegram</a></nav><nav aria-label="Información"><a href="#destacado">MagPlayer+</a><a href="#roadmap">Roadmap</a><a href="#apoyar">Apoyar el proyecto</a><a href="#verificar">Verificar APK</a><a href="legal.html">Información legal</a><span>© <span id="year"></span> MagStudios</span></nav></div></footer>
-  <div id="toast" class="toast" role="status"></div>
+        <nav class="nv-footer-nav" aria-label="Navegación del pie">
+          <a href="#inicio">Inicio</a>
+          <a href="#descargar">Descargas</a>
+          <a href="#experiencia">Experiencia</a>
+          <a href="guia.html">Guía de Instalación</a>
+          <a href="#origen">Origen & Fork</a>
+          <a href="#comunidad">Comunidad</a>
+          <a href="legal.html">Legal & Privacidad</a>
+          <a href="https://github.com/NexDevStudios-repo/neXStream" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
   <script src="js/main.js"></script>
 </body>
 </html>

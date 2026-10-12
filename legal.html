@@ -1,71 +1,138 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Información legal · MagStudios</title>
-  <meta name="description" content="Información legal de MagStudios, MagPlayer+ y sus publicaciones oficiales." />
-  <meta id="theme-color-meta" name="theme-color" content="#0a0e12" />
-  <link rel="icon" type="image/png" href="assets/logo.png" />
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('magplayer-theme');
-        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        document.documentElement.dataset.theme = t;
-      } catch (_) { document.documentElement.dataset.theme = 'dark'; }
-    })();
-  </script>
+  <title>Información Legal y Términos · neXStream · NexDev Studios</title>
+  <meta name="description" content="Información legal, aviso de neutralidad y términos de uso de neXStream desarrollado por NexDev Studios." />
+  <meta id="theme-color-meta" name="theme-color" content="#090b10" />
+  <link rel="icon" type="image/png" href="assets/logo-square.png" />
+  <link rel="canonical" href="https://nexdevstudios.vercel.app/legal.html" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] }, colors: { soft: 'var(--soft)', muted: 'var(--muted)' } } } };</script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .legal-content {
+      max-width: 800px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+    }
+    .legal-content h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+    }
+    .legal-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      color: var(--accent-cyan);
+    }
+    .legal-content p {
+      color: var(--ink-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .legal-content a {
+      color: var(--accent-violet);
+      text-decoration: underline;
+    }
+    .legal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-top: 24px;
+    }
+  </style>
 </head>
-<body class="font-sans antialiased">
-  <div class="ambient" aria-hidden="true"></div>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="studio-brand" href="index.html" aria-label="Volver a MagStudios">
-        <img class="studio-logo" src="assets/logo.png" alt="" width="559" height="447" />
-        <span>Mag<strong>Studios</strong></span>
-      </a>
-      <nav class="nav-links" aria-label="Navegación legal"><a href="index.html">Inicio</a><a href="magplayer.html">MagPlayer+</a><a href="guia.html">Guía</a></nav>
-      <div class="nav-actions">
-        <details class="mobile-menu">
-          <summary aria-label="Abrir menú de navegación"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></summary>
-          <nav aria-label="Navegación móvil"><a href="index.html">Inicio</a><a href="magplayer.html">MagPlayer+</a><a href="guia.html">Guía</a></nav>
-        </details>
-                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar tema">
-                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-                </button>
-        <a class="button button-primary top-download" href="index.html#descargar">Descargar</a>
+<body>
+  <header class="nv-site-header">
+    <div class="nv-site-header-shell">
+      <div class="nv-brand-combo">
+        <a class="nv-studio-brand" href="index.html" aria-label="NexDev Studios">
+          <img class="nv-studio-logo" src="assets/nexdevstudios-logo.png" alt="NexDev Studios" width="130" height="32" />
+        </a>
+        <span class="nv-brand-separator" aria-hidden="true">/</span>
+        <a class="nv-app-brand" href="index.html" aria-label="neXStream">
+          <img class="nv-app-logo" src="assets/nexstream-logo.png" alt="neXStream" width="110" height="28" />
+          <span class="nv-badge">v1.0.0</span>
+        </a>
+      </div>
+      <nav class="nv-desktop-nav">
+        <a class="nv-desktop-nav-link" href="index.html">← Volver al Inicio</a>
+        <a class="nv-desktop-nav-link" href="guia.html">Guía</a>
+      </nav>
+      <div class="nv-desktop-actions">
+        <a class="nv-login-button" href="index.html#descargar">Descargar APK</a>
+      </div>
+
+      <!-- Mobile Menu Trigger -->
+      <button class="nv-mobile-menu-button" id="mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Menú desplegable en móvil -->
+      <div class="nv-mobile-menu" id="mobile-menu" hidden>
+        <div class="nv-mobile-nav">
+          <a class="nv-mobile-nav-link" href="index.html">Inicio</a>
+          <a class="nv-mobile-nav-link" href="index.html#descargar">Descargas APK</a>
+          <a class="nv-mobile-nav-link" href="index.html#experiencia">Experiencia</a>
+          <a class="nv-mobile-nav-link" href="guia.html">Guía de Inicio</a>
+          <a class="nv-mobile-nav-link" href="legal.html">Legal & Privacidad</a>
+          <a class="nv-mobile-nav-link" href="https://github.com/NexDevStudios-repo/neXStream" target="_blank" rel="noopener noreferrer">GitHub Oficial</a>
+        </div>
       </div>
     </div>
   </header>
-  <main class="legal-page mx-auto max-w-3xl px-5 py-12">
-    <p class="eyebrow mt-12">INFORMACIÓN LEGAL Y DE DISTRIBUCIÓN</p>
-    <h1 class="mt-3 text-4xl font-extrabold tracking-tight">MagPlayer+ es el producto insignia de MagStudios.</h1>
-    <p class="mt-6 text-soft leading-8">MagStudios es un estudio independiente dedicado al desarrollo de software abierto y herramientas libres para móvil, televisión y escritorio. MagPlayer+ es nuestro reproductor y centro multimedia insignia, diseñado bajo estrictos principios de privacidad, transparencia y neutralidad tecnológica.</p>
 
-    <h2 class="mt-10 text-xl font-bold">Naturaleza del software y neutralidad</h2>
-    <p class="mt-3 text-soft leading-8">MagPlayer+ es una aplicación de reproducción neutral. No incluye, aloja, vende, comercializa ni distribuye listas M3U, servidores Xtream, canales de televisión, películas, series o contenidos audiovisuales de ningún tipo. La aplicación es una herramienta técnica que procesa y reproduce exclusivamente los archivos y fuentes que cada usuario incorpora por su propia cuenta y bajo su total control.</p>
+  <main class="legal-content">
+    <div style="margin-top: 100px;">
+      <span class="nv-panel-tag">Términos y Responsabilidad</span>
+      <h1 class="nv-h2" style="margin-top: 8px;">Información Legal y Neutralidad Tecnológica</h1>
+      
+      <div class="nv-screen-switcher" style="margin-top: 32px;">
+        <p class="nv-body" style="margin-bottom: 20px;"><strong>neXStream</strong> es un reproductor multimedia y cliente de código abierto desarrollado y publicado por <strong>NexDev Studios</strong> bajo la licencia <strong>GNU General Public License v3.0 (GPL-3.0)</strong>.</p>
 
-    <h2 class="mt-10 text-xl font-bold">Distribución oficial y actualizaciones seguras</h2>
-    <p class="mt-3 text-soft leading-8">El canal oficial de publicación, código fuente y binarios es el repositorio oficial de GitHub (<a href="https://github.com/MagStudios-repo/MagPlayerPlus" target="_blank" rel="noopener" class="text-primary underline">MagStudios-repo/MagPlayerPlus</a>). Todas las versiones oficiales para Android (ARM64, ARMv7 y x86_64) están firmadas digitalmente por MagStudios. La aplicación cuenta con un actualizador in-app transparente que descarga los paquetes directamente desde las Releases de GitHub y verifica su huella criptográfica SHA-256 antes de solicitar la autorización de instalación al sistema Android.</p>
+        <h3 style="font-size: 1.3rem; margin: 28px 0 10px; color: var(--nv-accent-cyan);">1. Neutralidad del Software</h3>
+        <p class="nv-body" style="font-size: 0.95rem; margin-bottom: 16px;">neXStream es una herramienta técnica de reproducción de medios completamente neutral. <strong>No contiene, aloja, vende, retransmite, comercializa ni proporciona listas de reproducción, servidores Xtream Codes, canales de televisión, películas, series ni ningún tipo de contenido audiovisual protegido por derechos de autor.</strong></p>
+        <p class="nv-body" style="font-size: 0.95rem; margin-bottom: 16px;">La aplicación viene totalmente vacía tras su instalación y actúa de manera pasiva y equivalente a un reproductor multimedia estándar (como VLC o mpv), procesando únicamente las fuentes y credenciales que cada usuario introduce voluntariamente bajo su propia responsabilidad.</p>
 
-    <h2 class="mt-10 text-xl font-bold">Responsabilidad del usuario</h2>
-    <p class="mt-3 text-soft leading-8">Cada persona que utiliza MagPlayer+ es la única responsable de los archivos, enlaces, transmisiones y listas que decide cargar y reproducir, así como de contar con los derechos, licencias y autorizaciones legales pertinentes para su visualización en su respectiva jurisdicción. MagStudios no tiene acceso, control ni conocimiento de los contenidos consumidos por los usuarios.</p>
+        <h3 style="font-size: 1.3rem; margin: 28px 0 10px; color: var(--nv-accent-cyan);">2. Responsabilidad del Usuario</h3>
+        <p class="nv-body" style="font-size: 0.95rem; margin-bottom: 16px;">Cada usuario final es el único y exclusivo responsable de la procedencia, legalidad y autorización de los contenidos, transmisiones, URLs y listas IPTV que decida configurar en la aplicación. NexDev Studios no tiene relación, acuerdos comerciales ni control sobre los proveedores de listas ni los servidores que los usuarios configuren.</p>
 
-    <h2 class="mt-10 text-xl font-bold">Seguridad y copias no autorizadas</h2>
-    <p class="mt-3 text-soft leading-8">Para garantizar la máxima seguridad e integridad de los dispositivos, recomendamos descargar MagPlayer+ exclusivamente a través de la web oficial de MagStudios o nuestro repositorio de GitHub. Para verificar que un archivo APK no ha sido alterado por terceros, disponemos de un verificador de huella SHA-256 en nuestra página principal.</p>
+        <h3 style="font-size: 1.3rem; margin: 28px 0 10px; color: var(--nv-accent-cyan);">3. Privacidad y Seguridad</h3>
+        <p class="nv-body" style="font-size: 0.95rem; margin-bottom: 16px;">neXStream no recolecta, transmite ni almacena las credenciales de los servidores de los usuarios en ningún servidor externo ni en bases de datos de NexDev Studios. Todas las contraseñas, URLs y favoritos se almacenan de manera local y encriptada en el propio dispositivo del usuario.</p>
 
-    <h2 class="mt-10 text-xl font-bold">Contacto y canales oficiales</h2>
-    <p class="mt-3 text-soft leading-8">Soporte oficial: <a href="mailto:soportemagstudiosoficial@gmail.com" class="text-primary underline">soportemagstudiosoficial@gmail.com</a> · Comunidad: <a href="https://t.me/+Wua5dPKBPJEzNmIx" target="_blank" rel="noopener" class="text-primary underline">Telegram de MagStudios</a> · Repositorio y código: <a href="https://github.com/MagStudios-repo" target="_blank" rel="noopener" class="text-primary underline">GitHub Oficial</a>.</p>
-    <p class="mt-12 text-muted text-sm">© <span id="year"></span> MagStudios · Software abierto, libre y transparente.</p>
+        <h3 style="font-size: 1.3rem; margin: 28px 0 10px; color: var(--nv-accent-cyan);">4. Distribución Oficial y Código Abierto</h3>
+        <p class="nv-body" style="font-size: 0.95rem; margin-bottom: 16px;">Los únicos canales oficiales de distribución autorizados por NexDev Studios son el repositorio de código abierto en GitHub (<a class="nv-link" href="https://github.com/NexDevStudios-repo/neXStream" target="_blank" rel="noopener">NexDevStudios-repo/neXStream</a>) y sus lanzamientos oficiales adjuntos en <a class="nv-link" href="https://github.com/NexDevStudios-repo/neXStream/releases" target="_blank" rel="noopener">GitHub Releases</a>.</p>
+        <p class="nv-body" style="font-size: 0.95rem; margin-bottom: 16px;">El código fuente completo es auditable y libre bajo los términos de la GPL-3.0. Para atribuciones del proyecto base Nuvio, consulta el archivo <code>NOTICE.md</code> del repositorio.</p>
+
+        <h3 style="font-size: 1.3rem; margin: 28px 0 10px; color: var(--nv-accent-cyan);">5. Contacto Oficial</h3>
+        <p class="nv-body" style="font-size: 0.95rem;">Para consultas legales, de soporte o comunitarias, puedes comunicarte directamente a nuestro correo oficial de asistencia técnica: <a class="nv-link" href="mailto:soportenexdevstudiosoficial@gmail.com">soportenexdevstudiosoficial@gmail.com</a>.</p>
+      </div>
+    </div>
   </main>
+
+  <footer class="nv-footer" style="margin-top: 60px;">
+    <div class="nv-wrap">
+      <div class="nv-footer-inner">
+        <p class="nv-footer-copy">© 2026 <strong>NexDev Studios</strong> · neXStream Licenciado bajo GPL-3.0.</p>
+        <div style="display: flex; gap: 16px;">
+          <a class="nv-link" href="guia.html">Guía de Inicio</a>
+          <a class="nv-link" href="index.html">Volver a neXStream</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script src="js/main.js"></script>
 </body>
 </html>
